@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>Electric Specifications - GNU Project - Free Software Foundation (FSF)</TITLE>
+<LINK REV="made" HREF="mailto:webmasters@www.gnu.org">
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<H1>Electric Specifications</H1>
+<IMG SRC="electric.jpg" ALT=" [icon of an electrical socket] " WIDTH="129" HEIGHT="122">
+<A HREF="/philosophy/gif.html">no gifs due to patent problems</A>
+
+<P>
+<CENTER><H1><A NAME="Technologies">Technologies</A></H1></CENTER>
+Electric supports multiple design technologies including:
+<UL>
+<LI>n-channel MOS (nMOS).</TD></TR>
+<LI>Complementary MOS (CMOS), 6 different versions including
+MOSIS Submicron rules (quad-metal, double-poly),
+DOD rules (double metal), and
+Round rules (from Cal Tech).
+<LI>Bipolar (Integrated Injector Logic).
+<LI>BiCMOS (hybrid of Bioplar and CMOS).
+<LI>Digital Filter arcitectural layout.
+<LI>Printed Circuits (up to 8-layer boards).
+<LI>Schematics (both analog and digital components).
+<LI>Artwork (for graphic design).
+</UL>
+Each technology is a collection of components and connecting wires.
+In addition, the technology describes all characteristics of its components
+and wires including the
+graphical descriptions, design rules, simulation aspects, etc.
+A technology is a module that can easily be added to Electric to provide a
+custom design environment.
+In addition, a technology editor allows interactive creation and modification.
+
+<P>
+<HR>
+<BR>
+<CENTER><H1>Analysis and Synthesis Tools</H1></CENTER>
+The system stores both connectivity and geometry so that analysis and
+synthesis tools can easily acquire
+the information they need.
+For example, the incremental design-rule checker uses connectivity
+information to avoid
+complaining about situations that other locality-based checkers would
+erroneously flag.
+These are the tools available in Electric:
+<H3>Design-Rule Checking</H3>
+The incremental design-rule checker watches all changes made to the layout and displays error messages
+when violations are detected.
+It checks for spacing errors, notch errors, and minimum size violations.
+<P>
+A hierarchical design-rule checker does a thorough check of the circuit but takes longer to run.
+<P>
+An offline design-rule checker interfaces to the Dracula Design Rule Checker.
+
+<H3>Electrical-Rule Checking</H3>
+The electrical-rule checker examines all well and substrate areas, ensuring proper contacts and
+spacings.
+
+<H3>Simulation</H3>
+Electric has a built-in 12-state switch-level simulator.
+The simulator displays waveforms in a separate window and lets users cross-probe from either
+the waveform or the circuit window.
+
+<H3>Simulation Interface</H3>
+Electric is able to produce input decks for a number of popular simulators, including:
+<UL>
+<LI>Device-level simulators such as Spice.
+<LI>Switch-level simulators such as Silos, Tegas, ESIM, RSIM, RNL, Cosmos, and Mossim.
+<LI>Behavioral-level simulators such as Verilog.
+<LI>Miscellaneous simulators such as PALs.
+</UL>
+<P>
+Users of Electric must obtain these simulators on their own.
+
+<H3>Generation</H3>
+The nMOS PLA generator produces complete layouts, including drivers and supply rails.
+<P>
+The CMOS PLA generator works from a library of PLA elements, thus allowing customized
+arrays.
+<P>
+The Pad Frame generator places pad cells around a chip core and wires them together.
+
+<H3>Compaction</H3>
+The compactor adjusts geometry to its minimal spacing in the X and Y axes.
+
+<H3>Compensation</H3>
+Compensation adjusts geometry to account for manufacturing anamolies.
+The Electric compensation system is able to handle curved geometry such as is
+found in micromechanical design.
+
+<H3>Logical Effort</H3>
+Logical Effort is a system for marking digital schematic gates with fanout
+information that will produce optimally fast circuits.
+
+<H3>Routing</H3>
+The maze router runs single wires between points.
+<P>
+The cell stitching router make explicit connections where cells abut or overlap.
+<P>
+The mimic router watches user activity.
+When it sees a wire being created or deleted, it repeats the activity
+in similar situations throughout the circuit.
+<P>
+The river router runs multiple parallel wires in a channel between cells.
+
+<H3>VHDL</H3>
+The VHDL system can generate VHDL from a layout, and can compile VHDL to netlists
+of various format.
+These netlists can then be simulated with the built-in simulator,
+turned into layout with the silicon compiler,
+or saved to disk for use by external simulators.
+
+<H3>Silicon Compiler</H3>
+The Silicon Compiler places and routes standard cells from a structural netlist (which can be
+obtained from VHDL which can be obtained from a schematic drawing).
+<H3>Network Consistency Checking</H3>
+The network consistency checker compares a layout with its equivalent schematic.
+It can also compare two different versions of a layout or two different versions of a schematic.
+
+<H3>Project Management</H3>
+This built-in system allows users to share a library of circuitry.
+Users can check out cells for editing and check them back in when done.
+Other users are prevented from changing checked-out cells, and can have their
+circuits updated when changes are checked in.
+<P>
+In addition, users are prevented from making changes to checked-out cells that would affect other
+cells that are not checked-out.
+Also, warnings are issued when multiple users check-out cells that are hierarchically related
+which may cause interference in their editing.
+
+<P>
+<HR>
+<BR>
+<CENTER><H1><A NAME="Interfaces">External Interfaces</A></H1></CENTER>
+Electric reads and writes libraries of circuitry in its own binary format.
+For portability between computers, it is also able to read and write a
+textual format of its database.
+However, for maximum compatibility with other EDA systems, Electric
+supports a number of
+popular interchange and manufacturing formats:
+<UL>
+<LI>CIF: Caltech Intermediate Format.
+<LI>GDS II: the Calma interchange format.
+<LI>DXF: the AutoCAD mechanical format.
+<LI>VHDL: a hardware description language.
+<LI>HPGL, QuickDraw, and PostScript: plotting languages.
+</UL>
+
+<P>
+<HR>
+
+Return to <A HREF="/home.html">GNU's home page</A>.
+
+<P>
+Please send FSF &amp; GNU inquiries &amp; questions to
+
+<A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+There are also <A HREF="/home.html#ContactInfo">other ways to contact</A> the FSF.
+
+<P>
+Please send comments on these web pages to
+<A HREF="mailto:webmasters@www.gnu.org"><EM>webmasters@www.gnu.org</EM></A>,
+send other questions to
+<A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+
+<P>
+Copyright (C) 1998 Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111,  USA
+
+<P>
+Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.
+<P>
+Updated:
+<!-- hhmts start -->
+06 Oct 1998 kwzh
+<!-- hhmts end -->
+<HR>
+</BODY>
+</HTML>
