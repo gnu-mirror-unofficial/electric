@@ -15,7 +15,7 @@ Electric supports multiple design technologies including:
 <UL>
 <LI>n-channel MOS (nMOS).</TD></TR>
 <LI>Complementary MOS (CMOS), 6 different versions including
-MOSIS Submicron rules (quad-metal, double-poly),
+MOSIS rules (6-metal, double-poly),
 DOD rules (double metal), and
 Round rules (from Cal Tech).
 <LI>Bipolar (Integrated Injector Logic).
@@ -55,7 +55,7 @@ A hierarchical design-rule checker does a thorough check of the circuit but take
 An offline design-rule checker interfaces to the Dracula Design Rule Checker.
 
 <H3>Electrical-Rule Checking</H3>
-The electrical-rule checker examines all well and substrate areas, ensuring proper contacts and
+The electrical-rule checker examines all well areas, ensuring proper contacts and
 spacings.
 
 <H3>Simulation</H3>
@@ -67,7 +67,7 @@ the waveform or the circuit window.
 Electric is able to produce input decks for a number of popular simulators, including:
 <UL>
 <LI>Device-level simulators such as Spice.
-<LI>Switch-level simulators such as Silos, Tegas, ESIM, RSIM, RNL, Cosmos, and Mossim.
+<LI>Switch-level simulators such as Silos, Tegas, IRSIM, ESIM, RSIM, RNL, Cosmos, and Mossim.
 <LI>Behavioral-level simulators such as Verilog.
 <LI>Miscellaneous simulators such as PALs.
 </UL>
@@ -115,8 +115,10 @@ or saved to disk for use by external simulators.
 <H3>Silicon Compiler</H3>
 The Silicon Compiler places and routes standard cells from a structural netlist (which can be
 obtained from VHDL which can be obtained from a schematic drawing).
-<H3>Network Consistency Checking</H3>
-The network consistency checker compares a layout with its equivalent schematic.
+
+<H3>Network Consistency Checking (LVS)</H3>
+The network consistency checker uses the "Gemini" algorithm to
+compare a layout with its equivalent schematic.
 It can also compare two different versions of a layout or two different versions of a schematic.
 
 <H3>Project Management</H3>
@@ -143,8 +145,11 @@ popular interchange and manufacturing formats:
 <UL>
 <LI>CIF: Caltech Intermediate Format.
 <LI>GDS II: the Calma interchange format.
+<LI>EDIF: the electronic design interchange format.
 <LI>DXF: the AutoCAD mechanical format.
-<LI>VHDL: a hardware description language.
+<LI>SDF: the standard delay format, for simulators.
+<LI>VHDL and Verilog: hardware description languages.
+<LI>EAGLE, PADS, EDAD, and SUE: schematic capture packages
 <LI>HPGL, QuickDraw, and PostScript: plotting languages.
 </UL>
 
@@ -175,7 +180,7 @@ permitted in any medium, provided this notice is preserved.
 <P>
 Updated:
 <!-- hhmts start -->
-06 Oct 1998 kwzh
+2 Sep 2001 smr
 <!-- hhmts end -->
 <HR>
 </BODY>
