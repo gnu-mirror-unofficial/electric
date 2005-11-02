@@ -12,10 +12,10 @@
 <CENTER><H1><A NAME="Technologies">Technologies</A></H1></CENTER>
 Electric supports multiple design technologies including:
 <UL>
+
 <LI>n-channel MOS (nMOS).</TD></TR>
-<LI>Complementary MOS (CMOS), 6 different versions including
-MOSIS rules (6-metal, double-poly),
-DOD rules (double metal), and
+<LI>Complementary MOS (CMOS), many different versions including
+MOSIS rules (6-metal, double-poly), and
 Round rules (from Cal Tech).
 <LI>Bipolar (Integrated Injector Logic).
 <LI>BiCMOS (hybrid of Bioplar and CMOS).
@@ -41,17 +41,18 @@ information to avoid
 complaining about situations that other locality-based checkers would
 erroneously flag.
 These are the tools available in Electric:
+
 <H3>Design-Rule Checking</H3>
 The incremental design-rule checker watches all changes made to the layout and displays error messages
 when violations are detected.
 It checks for spacing errors, notch errors, and minimum size violations.
 <P>
 A hierarchical design-rule checker does a thorough check of the circuit but takes longer to run.
-<P>
-An offline design-rule checker interfaces to the Dracula Design Rule Checker.
 
 <H3>Electrical-Rule Checking</H3>
 The electrical-rule checker examines all well areas, ensuring proper contacts and spacings.
+<P>
+It also is able to check for antenna rules violations.
 
 <H3>Simulation</H3>
 Electric has a built-in 12-state switch-level simulator, called ALS.
@@ -62,6 +63,7 @@ the waveform or the circuit window.
 <H3>Simulation Interface</H3>
 Electric is able to produce input decks for a number of popular simulators, including:
 <UL>
+
 <LI>Device-level simulators such as Spice.
 <LI>Switch-level simulators such as Silos, Tegas, IRSIM, ESIM, RSIM, RNL, Cosmos, and Mossim.
 <LI>Behavioral-level simulators such as Verilog.
@@ -71,19 +73,14 @@ Electric is able to produce input decks for a number of popular simulators, incl
 Users of Electric must obtain these simulators on their own.
 
 <H3>Generation</H3>
-The nMOS PLA generator produces complete layouts, including drivers and supply rails.
-<P>
 The CMOS PLA generator works from a library of PLA elements, thus allowing customized arrays.
+<P>
+The ROM generator builds a ROM layout from a personality table.
 <P>
 The Pad Frame generator places pad cells around a chip core and wires them together.
 
 <H3>Compaction</H3>
 The compactor adjusts geometry to its minimal spacing in the X and Y axes.
-
-<H3>Compensation</H3>
-Compensation adjusts geometry to account for manufacturing anamolies.
-The Electric compensation system is able to handle curved geometry such as is
-found in micromechanical design.
 
 <H3>Logical Effort</H3>
 Logical Effort is a system for marking digital schematic gates with fanout
@@ -101,6 +98,7 @@ in similar situations throughout the circuit.
 The river router runs multiple parallel wires in a channel between cells.
 
 <H3>VHDL</H3>
+
 The VHDL system can generate VHDL from a layout, and can compile VHDL to netlists
 of various format.
 These netlists can then be simulated with the built-in simulator,
@@ -125,15 +123,15 @@ circuits updated when changes are checked in.
 In addition, users are prevented from making changes to checked-out cells that would affect other
 cells that are not checked-out.
 Also, warnings are issued when multiple users check-out cells that are hierarchically related
-which may cause interference in their editing.
+which may cause interference in their editing.
+
 
 <P>
 <HR>
 <BR>
 <CENTER><H1><A NAME="Interfaces">External Interfaces</A></H1></CENTER>
-Electric reads and writes libraries of circuitry in its own binary format.
-For portability between computers, it is also able to read and write a
-textual format of its database.
+
+Electric reads and writes libraries of circuitry in its own format.
 However, for maximum compatibility with other EDA systems, Electric
 supports a number of
 popular interchange and manufacturing formats:
@@ -142,16 +140,16 @@ popular interchange and manufacturing formats:
 <LI>GDS II: the Calma interchange format.
 <LI>EDIF: the electronic design interchange format.
 <LI>DXF: the AutoCAD mechanical format.
-<LI>SDF: the standard delay format, for simulators.
 <LI>VHDL and Verilog: hardware description languages.
 <LI>EAGLE, PADS, EDAD, and SUE: schematic capture packages
-<LI>HPGL, QuickDraw, and PostScript: plotting languages.
+<LI>HPGL and PostScript: plotting languages.
 </UL>
 
 <P>
 <HR>
 
 Return to <A HREF="/home.html">GNU's home page</A>.
+
 <P>
 Please send FSF &amp; GNU inquiries &amp; questions to
 <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
@@ -162,6 +160,7 @@ Please send comments on these web pages to
 <A HREF="mailto:webmasters@www.gnu.org"><EM>webmasters@www.gnu.org</EM></A>,
 send other questions to
 <A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+
 <P>
 Copyright (C) 1998 Free Software Foundation, Inc.,
 59 Temple Place - Suite 330, Boston, MA  02111,  USA
@@ -172,7 +171,7 @@ permitted in any medium, provided this notice is preserved.
 <P>
 Updated:
 <!-- hhmts start -->
-2 Jun 2002 smr
+1 Jul 2005 smr
 <!-- hhmts end -->
 <HR>
 </BODY>
