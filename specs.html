@@ -1,177 +1,205 @@
 <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<HTML>
-<HEAD>
-<TITLE>Electric Specifications - GNU Project - Free Software Foundation (FSF)</TITLE>
-<LINK REV="made" HREF="mailto:webmasters@www.gnu.org">
-</HEAD>
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
-<H1>Electric Specifications</H1>
-<IMG SRC="electric.jpg" ALT=" [icon of an electrical socket] " WIDTH="129" HEIGHT="122">
-<HR>
-<P>
-<CENTER><H1><A NAME="Technologies">Technologies</A></H1></CENTER>
-Electric supports multiple design technologies including:
-<UL>
+<html>
+<head>
+<title>Electric Specifications - GNU Project - Free Software Foundation (FSF)</title>
+<link rev="made" href="mailto:webmasters@www.gnu.org">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#1f00ff" alink="#ff0000" vlink="#9900dd">
+<h1>Electric Specifications</h1>
+<img src="electric.jpg" alt="icon of an electrical socket" width="129" height="122">
+<hr />
 
-<LI>n-channel MOS (nMOS).</TD></TR>
-<LI>Complementary MOS (CMOS), many different versions including
-MOSIS rules (6-metal, double-poly), and
-Round rules (from Cal Tech).
-<LI>Bipolar (Integrated Injector Logic).
-<LI>BiCMOS (hybrid of Bioplar and CMOS).
-<LI>Digital Filter arcitectural layout.
-<LI>Printed Circuits (display only of up to 8-layer boards).
-<LI>Schematics (both analog and digital components).
-<LI>Artwork (for graphic design).
-</UL>
+<h1 align="center"><A NAME="Technologies">Technologies</a></h1>
+<p>
+Electric supports multiple design technologies.
 Each technology is a collection of components and connecting wires.
 In addition, the technology describes all characteristics of its components
 and wires including the graphical descriptions, design rules, simulation aspects, etc.
 A technology is a module that can easily be added to Electric to provide a custom design environment.
 In addition, a technology editor allows interactive creation and modification.
+Here are some technologies available in Electric:
+</p>
+<ul>
+<li>CMOS, many different versions including MOSIS rules (6-metal, double-poly).</li>
+<li>Newer layout technologies, including thin film CMOS, carbon nanotube CMOS,
+and an experimental photonics technology.</li>
+<li>Older layout technologies, including nMOS, Bipolar (Integrated Injector Logic),
+and BiCMOS (a hybrid of Bioplar and CMOS).</li>
+<li>Abstract technologies, including Digital Filter arcitectural layout and temporal logic).</li>
+</ul>
 
-<P>
-<HR>
-<BR>
-<CENTER><H1>Analysis and Synthesis Tools</H1></CENTER>
+<hr />
+
+<h1 align="center">Analysis and Synthesis Tools</h1>
+<p>
 The system stores both connectivity and geometry so that analysis and
 synthesis tools can easily acquire the information they need.
 For example, the incremental design-rule checker uses connectivity
-information to avoid
-complaining about situations that other locality-based checkers would
-erroneously flag.
+information to avoid complaining about situations that other locality-based checkers would erroneously flag.
 These are the tools available in Electric:
+</p>
 
-<H3>Design-Rule Checking</H3>
-The incremental design-rule checker watches all changes made to the layout and displays error messages
-when violations are detected.
+<h3>Design-Rule Checking</h3>
+<p>
+The incremental design-rule checker watches all changes made to the layout,
+and displays error messages when violations are detected.
 It checks for spacing errors, notch errors, and minimum size violations.
-<P>
+</p>
+<p>
 A hierarchical design-rule checker does a thorough check of the circuit but takes longer to run.
+</p>
+<p>
+Interfaces exist to external design-rule checkers, including Caliber and Assura.
+</p>
 
-<H3>Electrical-Rule Checking</H3>
-The electrical-rule checker examines all well areas, ensuring proper contacts and spacings.
-<P>
-It also is able to check for antenna rules violations.
+<h3>Electrical-Rule Checking</h3>
+<p>
+The electrical-rule checker has two facilities.
+One examines all well areas, ensuring proper contacts and spacings.
+The other checks for antenna rules violations.
+</p>
 
-<H3>Simulation</H3>
+<h3>Simulation</h3>
+<p>
 Electric has a built-in 12-state switch-level simulator, called ALS.
 It also supports a built-in version of the IRSIM simulator.
 These simulators display waveforms in a separate window and let users cross-probe from either
 the waveform or the circuit window.
+</p>
 
-<H3>Simulation Interface</H3>
-Electric is able to produce input decks for a number of popular simulators, including:
-<UL>
-
-<LI>Device-level simulators such as Spice.
-<LI>Switch-level simulators such as Silos, Tegas, IRSIM, ESIM, RSIM, RNL, Cosmos, and Mossim.
-<LI>Behavioral-level simulators such as Verilog.
-<LI>Miscellaneous simulators such as PALs.
-</UL>
-<P>
+<h3>Simulation Interface</h3>
+<p>
+Electric is able to produce input decks for a number of popular simulators.
 Users of Electric must obtain these simulators on their own.
+Here are some of the simulators currently supported:
+</p>
+<ul>
+<li>Device-level simulators such as Spice.</li>
+<li>Switch-level simulators such as Silos, Tegas, IRSIM, ESIM, RSIM, RNL, Cosmos, and Mossim.</li>
+<li>Behavioral-level simulators such as Verilog and FastHenry.</li>
+</ul>
 
-<H3>Generation</H3>
-The CMOS PLA generator works from a library of PLA elements, thus allowing customized arrays.
-<P>
+<h3>Generation</h3>
+<p>
+The PLA generator works from a library of PLA elements, thus allowing customized arrays.
+</p>
+<p>
 The ROM generator builds a ROM layout from a personality table.
-<P>
+</p>
+<p>
 The Pad Frame generator places pad cells around a chip core and wires them together.
+</p>
+<p>
+The Fill generators place geometry on relevant layers to ensure proper fill during fabrication.
+</p>
 
-<H3>Compaction</H3>
-The compactor adjusts geometry to its minimal spacing in the X and Y axes.
+<h3>Routing</h3>
+<p>
+The maze router runs single wires between points.
+</p>
+<p>
+The sea-of-gates router runs uses multithreading to run wires faster.
+</p>
+<p>
+Two routers exist for making sure wires are properly placed.
+The auto router makes explicit connections whereever geometry abuts or overlaps.
+The mimic router watches user activity,
+adding extra wires in situations similar to those that the user runs by hand.
+</p>
+<p>
+The river router runs multiple parallel wires in a channel between cells.
+</p>
 
-<H3>Logical Effort</H3>
+<h3>Network Consistency Checking (LVS)</h3>
+<p>
+The network consistency checker uses graph isomorphism to compare a layout with its equivalent schematic.
+It can also compare two different versions of a layout or two different versions of a schematic.
+</p>
+
+<h3>Logical Effort</h3>
+<p>
 Logical Effort is a system for marking digital schematic gates with fanout
 information that will produce optimally fast circuits.
+</p>
 
-<H3>Routing</H3>
-The maze router runs single wires between points.
-<P>
-The cell stitching router make explicit connections where cells abut or overlap.
-<P>
-The mimic router watches user activity.
-When it sees a wire being created or deleted, it repeats the activity
-in similar situations throughout the circuit.
-<P>
-The river router runs multiple parallel wires in a channel between cells.
-
-<H3>VHDL</H3>
-
+<h3>VHDL</h3>
+<p>
 The VHDL system can generate VHDL from a layout, and can compile VHDL to netlists
-of various format.
+of various formats.
 These netlists can then be simulated with the built-in simulator,
 turned into layout with the silicon compiler,
-or saved to disk for use by external simulators.
+or saved to disk for use by other systems.
+</p>
 
-<H3>Silicon Compiler</H3>
+<h3>Silicon Compiler</h3>
+<p>
 The Silicon Compiler places and routes standard cells from a structural netlist (which can be
 obtained from VHDL which can be obtained from a schematic drawing).
+</p>
 
-<H3>Network Consistency Checking (LVS)</H3>
-The network consistency checker uses the "Gemini" algorithm to
-compare a layout with its equivalent schematic.
-It can also compare two different versions of a layout or two different versions of a schematic.
-
-<H3>Project Management</H3>
-This built-in system allows users to share a library of circuitry.
-Users can check out cells for editing and check them back in when done.
-Other users are prevented from changing checked-out cells, and can have their
-circuits updated when changes are checked in.
-<P>
-In addition, users are prevented from making changes to checked-out cells that would affect other
-cells that are not checked-out.
-Also, warnings are issued when multiple users check-out cells that are hierarchically related
-which may cause interference in their editing.
+<h3>Compaction</h3>
+<p>
+The compactor adjusts geometry to its minimal spacing in the X and Y axes.
+</p>
 
 
-<P>
-<HR>
-<BR>
-<CENTER><H1><A NAME="Interfaces">External Interfaces</A></H1></CENTER>
+<hr />
 
+<h1 align="center"><a name="Interfaces">External Interfaces</a></h1>
+
+<p>
 Electric reads and writes libraries of circuitry in its own format.
 However, for maximum compatibility with other EDA systems, Electric
-supports a number of
-popular interchange and manufacturing formats:
-<UL>
-<LI>CIF: Caltech Intermediate Format.
-<LI>GDS II: the Calma interchange format.
-<LI>EDIF: the electronic design interchange format.
-<LI>DXF: the AutoCAD mechanical format.
-<LI>VHDL and Verilog: hardware description languages.
-<LI>EAGLE, PADS, EDAD, and SUE: schematic capture packages
-<LI>HPGL and PostScript: plotting languages.
-</UL>
+supports a number of popular interchange and manufacturing formats:
+</p>
+<ul>
+<li>CIF: Caltech Intermediate Format.</li>
+<li>GDS II: the Calma interchange format.</li>
+<li>EDIF: the electronic design interchange format.</li>
+<li>LEF and DEF: a popular interchange format.</li>
+<li>DXF: the AutoCAD mechanical format.</li>
+<li>Gerber: a manufacturing format.</li>
+<li>Bookshelf: a recent interchange format.</li>
+<li>VHDL and Verilog: hardware description languages.</li>
+<li>EAGLE, PADS, EDAD, and SUE: schematic capture packages.</li>
+<li>HPGL, SVG, PostScript, and PNG: printing formats.</li>
+</ul>
 
-<P>
-<HR>
+<hr />
 
-Return to <A HREF="/home.html">GNU's home page</A>.
+<p>
+Return to <a href="/home.html">GNU's home page</a>.
+</p>
 
-<P>
+<p>
 Please send FSF &amp; GNU inquiries &amp; questions to
-<A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
-There are also <A HREF="/home.html#ContactInfo">other ways to contact</A> the FSF.
+<a href="mailto:gnu@gnu.org"><em>gnu@gnu.org</em></a>.
+There are also <a href="/home.html#ContactInfo">other ways to contact</a> the FSF.
+</p>
 
-<P>
+<p>
 Please send comments on these web pages to
-<A HREF="mailto:webmasters@www.gnu.org"><EM>webmasters@www.gnu.org</EM></A>,
-send other questions to
-<A HREF="mailto:gnu@gnu.org"><EM>gnu@gnu.org</EM></A>.
+<a href="mailto:webmasters@www.gnu.org"><em>webmasters@www.gnu.org</em></a>,
+send other questions to <a href="mailto:gnu@gnu.org"><em>gnu@gnu.org</em></a>.
+</p>
 
-<P>
+<p>
 Copyright (C) 1998 Free Software Foundation, Inc.
+</p>
 
-<P>
+<p>
 Verbatim copying and distribution of this entire article is
 permitted in any medium, provided this notice is preserved.
-<P>
+</p>
+
+<p>
 Updated:
 <!-- hhmts start -->
 1 Jul 2005 smr
 <!-- hhmts end -->
-<HR>
-</BODY>
-</HTML>
+</p>
+
+<hr />
+
+</body>
+</html>
